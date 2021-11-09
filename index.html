@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+    <style>
+    body{
+        height: 100vh;
+        background: linear-gradient(
+            135deg,
+            #8052ec,
+            #d161ff
+        );
+    }
+    
+    #list{
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        text-align: center;
+        font-style: oblique;
+        border-radius: 45px;
+        width: 70%;
+        margin-left: 15%;
+    }
+    
+    
+    #submit{
+        background-color: royalblue;
+        color: var(--primary-color);
+        border-radius: 7px;
+        border: none;
+    }
+    
+    #empty{
+        background-color: rgb(250, 51, 16);
+        color: var(--primary-color);
+        margin: 15px 15px 10px;
+        border: none;
+    }
+    
+    #empty:hover{
+        background-color: rgb(240, 67, 36);
+        color: var(--secondary-color);
+    }
+
+    #icon{
+        width: 30px;
+        margin-left: 400px;
+    }
+
+    :root{
+        --primary-color: #fae3f5;
+        --secondary-color: #212121;
+    }
+
+    .dark-theme{
+        --primary-color: #000106;
+        --secondary-color: #fff;
+    }
+
+    
+    @media screen and (max-width: 450px) {
+        .list{
+            width: 90%;
+            margin-left: 5%;
+        }
+        #todo-list{
+            font-size: 20px;
+        }  
+        #icon{
+            width: 30px;
+            margin-left: 190px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div id=list>
+        <div class="first_line">
+            <img src="https://i.imgur.com/P2Vzds8.png" id="icon">
+            <h2 class="h2">My to-do list</h2>
+        </div>
+        
+        <p>Click on task when you want to remove.</p>
+        <div class="box">
+            <input type="text" name="" id="todo-entry-box" placeholder="Add task">
+            <button id="submit">Add</button>
+        </div>
+        <ol id="todo-list">
+        </ol>
+        <div class="control">
+            <button id="empty">Empty list</button> 
+        </div>
+    </div>
+
+<script>
+    var addButton = document.getElementById("submit");
+    addButton.addEventListener("click", addToDoItem);
+
+    function addToDoItem(){
+        var textBox = document.getElementById("todo-entry-box");
+
+        if(textBox.value.length == 0){
+            alert("Please add task.");
+        }else{
+            var textBoxValue = document.getElementById("todo-entry-box").value;
+            newToDoItem(textBoxValue);
+        }
+    }
+
+    function newToDoItem(textBoxValue){
+        var toDoList = document.getElementById("todo-list");
+        var toDoItem = document.createElement("li");
+        var toDoText = document.createTextNode(textBoxValue);
+        toDoItem.appendChild(toDoText);
+        toDoList.appendChild(toDoItem);
+
+        toDoItem.addEventListener("click", deleteItem);
+    }
+
+
+    //Double click function to remove particular task.
+    function deleteItem(){
+        var a = confirm("Do you waant to remove this task?");
+        if(a == true){
+            var x = document.getElementById("todo-list");
+            x.removeChild(this);
+        }
+    }
+    
+    //Empty function
+    var empty1 = document.getElementById("empty");
+    empty1.addEventListener("click", emptyy);
+
+    
+    function emptyy(){
+        var b = confirm('Do you want to Delete all task?');
+        if(b == true){
+            var list = document.getElementById("todo-list");
+            for(var i=0;i<100;i++){
+                list.removeChild(list.childNodes[0]);
+            }
+        }
+    }
+
+    //Dark mode
+    var icon =document.getElementById("icon");
+    icon.addEventListener("click", darkTheme)
+
+    function darkTheme(){
+        document.body.classList.toggle("dark-theme");
+        if(document.body.classList.contains("dark-theme")){
+            icon.src="https://i.imgur.com/JKGNQ6h.png";
+        }else{
+            icon.src="https://i.imgur.com/P2Vzds8.png";
+        }
+    }
+
+    // icon.onclick = function(){
+    //     document.body.classList.toggle("dark-theme");
+    //     if(document.body.classList.contains("dark-theme")){
+    //         icon.src="https://i.imgur.com/JKGNQ6h.png";
+    //     }else{
+    //         icon.src="https://i.imgur.com/P2Vzds8.png";
+    //     }
+    // }
+
+</script>
+</body>
+</html>

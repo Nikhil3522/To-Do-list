@@ -1,0 +1,66 @@
+body{
+    height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #8052ec,
+        #d161ff
+    )
+}
+
+.list{
+    background-color: rgb(218, 191, 195);
+    text-align: center;
+    font-style: oblique;
+    border-radius: 45px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+/*#todo-list{
+    background-color: aquamarine;
+    border: 2px dotted black;
+    margin: 0px 20px 0px 20px;
+}*/
+
+#submit{
+    background-color: royalblue;
+    color: white;
+    border-radius: 7px;
+    border: none;
+}
+
+#clear{
+    background-color: rgb(184, 53, 245);
+    color: white;
+    margin: 15px 15px 10px;
+    border: none;
+}
+
+#clear:hover{
+    background-color: rgb(189, 56, 240);
+    color: black;
+}
+
+#empty{
+    background-color: rgb(250, 51, 16);
+    color: white;
+    margin: 15px 15px 10px;
+    border: none;
+}
+
+#empty:hover{
+    background-color: rgb(240, 67, 36);
+    color: black;
+}
+
+#save{
+    background-color: rgb(26, 235, 88);
+    color: white;
+    margin: 15px 15px 10px;
+    border: none;
+}
+
+#save:hover{
+    background-color: rgb(21, 197, 51);
+    color: black;
+}
